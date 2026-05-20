@@ -1,0 +1,12 @@
+[DeyeInverter]
+# Deye Inverter Configuration File
+# Update these values to match your setup
+
+# IP address of the SOLARMAN datalogger
+inverter_ip = 192.168.1.2
+
+# Serial number of the SOLARMAN datalogger (usually found on device label)
+inverter_sn = 1234567890
+
+# Enable verbose logging for debugging (true/false)
+verbose = false

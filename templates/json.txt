@@ -1,0 +1,145 @@
+{{
+  "serial": "{serial}",
+  "system": {{
+    "status": "{system[status]}",
+    "dc_temperature_c": {system[dc_temperature]:.3f},
+    "ac_temperature_c": {system[ac_temperature]:.3f},
+    "battery_temperature_c": {system[battery_temperature]:.3f}
+  }},
+  "pv": {{
+    "active_strings": {pv[active_strings]},
+    "total_power_w": {pv[total_power]:.3f},
+    "strings": [
+      {{"name":"PV1","voltage_v":{pv_rows[0][voltage]:.3f},"current_a":{pv_rows[0][current]:.3f},"power_w":{pv_rows[0][power]:.3f}}},
+      {{"name":"PV2","voltage_v":{pv_rows[1][voltage]:.3f},"current_a":{pv_rows[1][current]:.3f},"power_w":{pv_rows[1][power]:.3f}}},
+      {{"name":"PV3","voltage_v":{pv_rows[2][voltage]:.3f},"current_a":{pv_rows[2][current]:.3f},"power_w":{pv_rows[2][power]:.3f}}},
+      {{"name":"PV4","voltage_v":{pv_rows[3][voltage]:.3f},"current_a":{pv_rows[3][current]:.3f},"power_w":{pv_rows[3][power]:.3f}}}
+    ]
+  }},
+  "inverter": {{
+    "total_power_w": {inverter[total_power]:.3f},
+    "l1": {{"voltage_v":{inverter[l1][voltage]:.3f},"current_a":{inverter[l1][current]:.3f},"power_w":{inverter[l1][power]:.3f}}},
+    "l2": {{"voltage_v":{inverter[l2][voltage]:.3f},"current_a":{inverter[l2][current]:.3f},"power_w":{inverter[l2][power]:.3f}}},
+    "l3": {{"voltage_v":{inverter[l3][voltage]:.3f},"current_a":{inverter[l3][current]:.3f},"power_w":{inverter[l3][power]:.3f}}}
+  }},
+  "grid": {{
+    "total_power_w": {grid[total_power]:.3f},
+    "direction": "{grid[direction]}",
+    "importing_flag": {grid[importing_flag]},
+    "l1": {{"voltage_v":{grid[l1][voltage]:.3f},"current_a":{grid[l1][current]:.3f},"power_w":{grid[l1][power]:.3f}}},
+    "l2": {{"voltage_v":{grid[l2][voltage]:.3f},"current_a":{grid[l2][current]:.3f},"power_w":{grid[l2][power]:.3f}}},
+    "l3": {{"voltage_v":{grid[l3][voltage]:.3f},"current_a":{grid[l3][current]:.3f},"power_w":{grid[l3][power]:.3f}}}
+  }},
+  "load": {{
+    "total_power_w": {load[total_power]:.3f},
+    "l1": {{"voltage_v":{load[l1][voltage]:.3f},"current_a":{load[l1][current]:.3f},"power_w":{load[l1][power]:.3f}}},
+    "l2": {{"voltage_v":{load[l2][voltage]:.3f},"current_a":{load[l2][current]:.3f},"power_w":{load[l2][power]:.3f}}},
+    "l3": {{"voltage_v":{load[l3][voltage]:.3f},"current_a":{load[l3][current]:.3f},"power_w":{load[l3][power]:.3f}}}
+  }},
+  "battery": {{
+    "battery1": {{
+      "voltage_v": {battery[battery1][voltage]:.3f},
+      "current_a": {battery[battery1][current]:.3f},
+      "power_w": {battery[battery1][power]:.3f},
+      "temperature_c": {battery[battery1][temperature]:.3f},
+      "soc_percent": {battery[battery1][soc]:.3f},
+      "capacity_percent": {battery[battery1][capacity_percent]:.3f},
+      "status": {battery[battery1][status]},
+      "direction": "{battery[battery1][direction]}"
+    }},
+    "battery2": {{
+      "voltage_v": {battery[battery2][voltage]:.3f},
+      "current_a": {battery[battery2][current]:.3f},
+      "power_w": {battery[battery2][power]:.3f},
+      "temperature_c": {battery[battery2][temperature]:.3f},
+      "soc_percent": {battery[battery2][soc]:.3f},
+      "capacity_percent": {battery[battery2][capacity_percent]:.3f},
+      "status": {battery[battery2][status]},
+      "direction": "{battery[battery2][direction]}"
+    }}
+  }},
+  "daily_energy_kwh": {{
+    "pv": {daily_energy[pv_generation]:.3f},
+    "load": {daily_energy[load_consumption]:.3f},
+    "grid_import": {daily_energy[grid_import]:.3f},
+    "grid_export": {daily_energy[grid_export]:.3f},
+    "battery_charge": {daily_energy[battery_charge]:.3f},
+    "battery_discharge": {daily_energy[battery_discharge]:.3f}
+  }},
+  "total_energy_kwh": {{
+    "pv": {total_energy[pv_generation]:.3f},
+    "load": {total_energy[load_consumption]:.3f},
+    "grid_import": {total_energy[grid_import]:.3f},
+    "grid_export": {total_energy[grid_export]:.3f},
+    "battery_charge": {total_energy[battery_charge]:.3f},
+    "battery_discharge": {total_energy[battery_discharge]:.3f}
+  }},
+  "tou": {{
+    "grid_charge_enable": "{grid_charge_enable}",
+    "solar_sell_enable": "{solar_sell_enable}",
+    "grid_charge_enable_num": {grid_charge_enable_num},
+    "solar_sell_enable_num": {solar_sell_enable_num},
+    "slots": [
+      {{
+        "slot": 1,
+        "timestart": "{tou_rows[0][start]}",
+        "timeend": "{tou_rows[0][end]}",
+        "power_w": {tou_rows[0][power]},
+        "soc_percent": {tou_rows[0][soc]},
+        "grid": {tou_rows[0][grid_flag]},
+        "gen": {tou_rows[0][gen_flag]},
+        "sell": {tou_rows[0][sell_flag]}
+      }},
+      {{
+        "slot": 2,
+        "timestart": "{tou_rows[1][start]}",
+        "timeend": "{tou_rows[1][end]}",
+        "power_w": {tou_rows[1][power]},
+        "soc_percent": {tou_rows[1][soc]},
+        "grid": {tou_rows[1][grid_flag]},
+        "gen": {tou_rows[1][gen_flag]},
+        "sell": {tou_rows[1][sell_flag]}
+      }},
+      {{
+        "slot": 3,
+        "timestart": "{tou_rows[2][start]}",
+        "timeend": "{tou_rows[2][end]}",
+        "power_w": {tou_rows[2][power]},
+        "soc_percent": {tou_rows[2][soc]},
+        "grid": {tou_rows[2][grid_flag]},
+        "gen": {tou_rows[2][gen_flag]},
+        "sell": {tou_rows[2][sell_flag]}
+      }},
+      {{
+        "slot": 4,
+        "timestart": "{tou_rows[3][start]}",
+        "timeend": "{tou_rows[3][end]}",
+        "power_w": {tou_rows[3][power]},
+        "soc_percent": {tou_rows[3][soc]},
+        "grid": {tou_rows[3][grid_flag]},
+        "gen": {tou_rows[3][gen_flag]},
+        "sell": {tou_rows[3][sell_flag]}
+      }},
+      {{
+        "slot": 5,
+        "timestart": "{tou_rows[4][start]}",
+        "timeend": "{tou_rows[4][end]}",
+        "power_w": {tou_rows[4][power]},
+        "soc_percent": {tou_rows[4][soc]},
+        "grid": {tou_rows[4][grid_flag]},
+        "gen": {tou_rows[4][gen_flag]},
+        "sell": {tou_rows[4][sell_flag]}
+      }},
+      {{
+        "slot": 6,
+        "timestart": "{tou_rows[5][start]}",
+        "timeend": "{tou_rows[5][end]}",
+        "power_w": {tou_rows[5][power]},
+        "soc_percent": {tou_rows[5][soc]},
+        "grid": {tou_rows[5][grid_flag]},
+        "gen": {tou_rows[5][gen_flag]},
+        "sell": {tou_rows[5][sell_flag]}
+      }}
+    ]
+  }}
+}}

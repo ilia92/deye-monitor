@@ -1,0 +1,64 @@
+=== Deye Inverter Status ===
+Status: {system[status]}
+DC Temperature: {system[dc_temperature]:.1f}°C
+AC Temperature: {system[ac_temperature]:.1f}°C
+Battery Temperature: {system[battery_temperature]:.1f}°C
+
+=== PV Input Values ===
+PV1: {pv_rows[0][voltage]:.1f}V, {pv_rows[0][current]:.2f}A, {pv_rows[0][power]:.0f}W
+PV2: {pv_rows[1][voltage]:.1f}V, {pv_rows[1][current]:.2f}A, {pv_rows[1][power]:.0f}W
+PV3: {pv_rows[2][voltage]:.1f}V, {pv_rows[2][current]:.2f}A, {pv_rows[2][power]:.0f}W
+PV4: {pv_rows[3][voltage]:.1f}V, {pv_rows[3][current]:.2f}A, {pv_rows[3][power]:.0f}W
+Total PV ({pv[active_strings]} active): {pv[total_power]:.0f}W
+
+=== Inverter Output ===
+Total Inverter Power: {inverter[total_power]:.0f}W
+L1: {inverter[l1][voltage]:.1f}V, {inverter[l1][current]:.2f}A, {inverter[l1][power]:.0f}W
+L2: {inverter[l2][voltage]:.1f}V, {inverter[l2][current]:.2f}A, {inverter[l2][power]:.0f}W
+L3: {inverter[l3][voltage]:.1f}V, {inverter[l3][current]:.2f}A, {inverter[l3][power]:.0f}W
+
+=== Grid Power (External CT) ===
+Total Grid Power: {grid[total_power]:.0f}W ({grid[direction]})
+L1: {grid[l1][voltage]:.1f}V, {grid[l1][current]:.2f}A, {grid[l1][power]:.0f}W
+L2: {grid[l2][voltage]:.1f}V, {grid[l2][current]:.2f}A, {grid[l2][power]:.0f}W
+L3: {grid[l3][voltage]:.1f}V, {grid[l3][current]:.2f}A, {grid[l3][power]:.0f}W
+
+=== Load Power ===
+Total Load Power: {load[total_power]:.0f}W
+L1: {load[l1][voltage]:.1f}V, {load[l1][current]:.2f}A, {load[l1][power]:.0f}W
+L2: {load[l2][voltage]:.1f}V, {load[l2][current]:.2f}A, {load[l2][power]:.0f}W
+L3: {load[l3][voltage]:.1f}V, {load[l3][current]:.2f}A, {load[l3][power]:.0f}W
+
+=== Battery Status ===
+Battery1: {battery[battery1][voltage]:.1f}V, {battery[battery1][current]:.2f}A, {battery[battery1][power]:.0f}W, {battery[battery1][temperature]:.1f}°C, {battery[battery1][soc]:.1f}%, {battery[battery1][capacity_percent]:.1f}%, {battery[battery1][status]} {battery[battery1][direction]}
+Battery2: {battery[battery2][voltage]:.1f}V, {battery[battery2][current]:.2f}A, {battery[battery2][power]:.0f}W, {battery[battery2][temperature]:.1f}°C, {battery[battery2][soc]:.1f}%, {battery[battery2][capacity_percent]:.1f}%, {battery[battery2][status]} {battery[battery2][direction]}
+
+=== Daily Energy Statistics ===
+PV Generation: {daily_energy[pv_generation]:.2f}kWh
+Load Consumption: {daily_energy[load_consumption]:.2f}kWh
+Grid Import: {daily_energy[grid_import]:.2f}kWh
+Grid Export: {daily_energy[grid_export]:.2f}kWh
+Battery Charge: {daily_energy[battery_charge]:.2f}kWh
+Battery Discharge: {daily_energy[battery_discharge]:.2f}kWh
+
+=== Total Energy Statistics ===
+Total PV Generation: {total_energy[pv_generation]:.1f}kWh
+Total Load Consumption: {total_energy[load_consumption]:.1f}kWh
+Total Grid Import: {total_energy[grid_import]:.1f}kWh
+Total Grid Export: {total_energy[grid_export]:.1f}kWh
+Total Battery Charge: {total_energy[battery_charge]:.1f}kWh
+Total Battery Discharge: {total_energy[battery_discharge]:.1f}kWh
+
+=== Time of Use Programming ===
+Grid Charge Enable: {grid_charge_enable}
+Solar Sell Enable: {solar_sell_enable}
+_________________________________________________________
+| Grid  | Gen | Sell |      Time     |   Pwr    | SOC % |
+|-------------------------------------------------------|
+|   {tou_rows[0][grid]}   |  {tou_rows[0][gen]}  |   {tou_rows[0][sell]}  | {tou_rows[0][start]} | {tou_rows[0][end]} | {tou_rows[0][power]:8d} | {tou_rows[0][soc]:4d}% |
+|   {tou_rows[1][grid]}   |  {tou_rows[1][gen]}  |   {tou_rows[1][sell]}  | {tou_rows[1][start]} | {tou_rows[1][end]} | {tou_rows[1][power]:8d} | {tou_rows[1][soc]:4d}% |
+|   {tou_rows[2][grid]}   |  {tou_rows[2][gen]}  |   {tou_rows[2][sell]}  | {tou_rows[2][start]} | {tou_rows[2][end]} | {tou_rows[2][power]:8d} | {tou_rows[2][soc]:4d}% |
+|   {tou_rows[3][grid]}   |  {tou_rows[3][gen]}  |   {tou_rows[3][sell]}  | {tou_rows[3][start]} | {tou_rows[3][end]} | {tou_rows[3][power]:8d} | {tou_rows[3][soc]:4d}% |
+|   {tou_rows[4][grid]}   |  {tou_rows[4][gen]}  |   {tou_rows[4][sell]}  | {tou_rows[4][start]} | {tou_rows[4][end]} | {tou_rows[4][power]:8d} | {tou_rows[4][soc]:4d}% |
+|   {tou_rows[5][grid]}   |  {tou_rows[5][gen]}  |   {tou_rows[5][sell]}  | {tou_rows[5][start]} | {tou_rows[5][end]} | {tou_rows[5][power]:8d} | {tou_rows[5][soc]:4d}% |
+---------------------------------------------------------

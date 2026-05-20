@@ -1,0 +1,203 @@
+# HELP deye_info Static labels about the inverter context.
+# TYPE deye_info gauge
+#deye_info{{source="deye-monitor28.py",serial="{serial}"}} 1
+
+# === PV ===
+# HELP deye_pv_voltage_v PV string DC voltage in volts.
+# TYPE deye_pv_voltage_v gauge
+deye_pv_voltage_v{{string="PV1",serial="{serial}"}} {pv_rows[0][voltage]:.3f}
+deye_pv_voltage_v{{string="PV2",serial="{serial}"}} {pv_rows[1][voltage]:.3f}
+deye_pv_voltage_v{{string="PV3",serial="{serial}"}} {pv_rows[2][voltage]:.3f}
+deye_pv_voltage_v{{string="PV4",serial="{serial}"}} {pv_rows[3][voltage]:.3f}
+
+# HELP deye_pv_current_a PV string DC current in amperes.
+# TYPE deye_pv_current_a gauge
+deye_pv_current_a{{string="PV1",serial="{serial}"}} {pv_rows[0][current]:.3f}
+deye_pv_current_a{{string="PV2",serial="{serial}"}} {pv_rows[1][current]:.3f}
+deye_pv_current_a{{string="PV3",serial="{serial}"}} {pv_rows[2][current]:.3f}
+deye_pv_current_a{{string="PV4",serial="{serial}"}} {pv_rows[3][current]:.3f}
+
+# HELP deye_pv_power_w PV string DC power in watts.
+# TYPE deye_pv_power_w gauge
+deye_pv_power_w{{string="PV1",serial="{serial}"}} {pv_rows[0][power]:.3f}
+deye_pv_power_w{{string="PV2",serial="{serial}"}} {pv_rows[1][power]:.3f}
+deye_pv_power_w{{string="PV3",serial="{serial}"}} {pv_rows[2][power]:.3f}
+deye_pv_power_w{{string="PV4",serial="{serial}"}} {pv_rows[3][power]:.3f}
+
+# HELP deye_pv_total_power_w Sum of active PV strings power.
+# TYPE deye_pv_total_power_w gauge
+deye_pv_total_power_w{{serial="{serial}"}} {pv[total_power]:.3f}
+# HELP deye_pv_active_strings_count Number of PV strings currently producing (>0 W).
+# TYPE deye_pv_active_strings_count gauge
+deye_pv_active_strings_count{{serial="{serial}"}} {pv[active_strings]}
+
+# === Inverter (AC output) ===
+# HELP deye_inverter_voltage_v Inverter phase voltage in volts.
+# TYPE deye_inverter_voltage_v gauge
+deye_inverter_voltage_v{{phase="L1",serial="{serial}"}} {inverter[l1][voltage]:.3f}
+deye_inverter_voltage_v{{phase="L2",serial="{serial}"}} {inverter[l2][voltage]:.3f}
+deye_inverter_voltage_v{{phase="L3",serial="{serial}"}} {inverter[l3][voltage]:.3f}
+
+# HELP deye_inverter_current_a Inverter phase current in amperes.
+# TYPE deye_inverter_current_a gauge
+deye_inverter_current_a{{phase="L1",serial="{serial}"}} {inverter[l1][current]:.3f}
+deye_inverter_current_a{{phase="L2",serial="{serial}"}} {inverter[l2][current]:.3f}
+deye_inverter_current_a{{phase="L3",serial="{serial}"}} {inverter[l3][current]:.3f}
+
+# HELP deye_inverter_power_w Inverter phase power in watts.
+# TYPE deye_inverter_power_w gauge
+deye_inverter_power_w{{phase="L1",serial="{serial}"}} {inverter[l1][power]:.3f}
+deye_inverter_power_w{{phase="L2",serial="{serial}"}} {inverter[l2][power]:.3f}
+deye_inverter_power_w{{phase="L3",serial="{serial}"}} {inverter[l3][power]:.3f}
+
+# HELP deye_inverter_total_power_w Total inverter output power in watts.
+# TYPE deye_inverter_total_power_w gauge
+deye_inverter_total_power_w{{serial="{serial}"}} {inverter[total_power]:.3f}
+
+# === Grid (External CT) ===
+# HELP deye_grid_voltage_v Grid phase voltage in volts (measured by inverter).
+# TYPE deye_grid_voltage_v gauge
+deye_grid_voltage_v{{phase="L1",serial="{serial}"}} {grid[l1][voltage]:.3f}
+deye_grid_voltage_v{{phase="L2",serial="{serial}"}} {grid[l2][voltage]:.3f}
+deye_grid_voltage_v{{phase="L3",serial="{serial}"}} {grid[l3][voltage]:.3f}
+
+# HELP deye_grid_current_a Grid phase current in amperes (computed as power/voltage).
+# TYPE deye_grid_current_a gauge
+deye_grid_current_a{{phase="L1",serial="{serial}"}} {grid[l1][current]:.3f}
+deye_grid_current_a{{phase="L2",serial="{serial}"}} {grid[l2][current]:.3f}
+deye_grid_current_a{{phase="L3",serial="{serial}"}} {grid[l3][current]:.3f}
+
+# HELP deye_grid_power_w Grid phase power in watts (external CT).
+# TYPE deye_grid_power_w gauge
+deye_grid_power_w{{phase="L1",serial="{serial}"}} {grid[l1][power]:.3f}
+deye_grid_power_w{{phase="L2",serial="{serial}"}} {grid[l2][power]:.3f}
+deye_grid_power_w{{phase="L3",serial="{serial}"}} {grid[l3][power]:.3f}
+
+# HELP deye_grid_total_power_w Total grid power in watts (positive=import, negative=export).
+# TYPE deye_grid_total_power_w gauge
+deye_grid_total_power_w{{serial="{serial}"}} {grid[total_power]:.3f}
+
+# HELP deye_grid_importing Flag: 1 if importing >0, 0 if exporting <0, 1 if balanced.
+# TYPE deye_grid_importing gauge
+deye_grid_importing{{serial="{serial}"}} {grid[importing_flag]}
+
+# === Load ===
+# HELP deye_load_voltage_v Load phase voltage in volts.
+# TYPE deye_load_voltage_v gauge
+deye_load_voltage_v{{phase="L1",serial="{serial}"}} {load[l1][voltage]:.3f}
+deye_load_voltage_v{{phase="L2",serial="{serial}"}} {load[l2][voltage]:.3f}
+deye_load_voltage_v{{phase="L3",serial="{serial}"}} {load[l3][voltage]:.3f}
+
+# HELP deye_load_current_a Load phase current in amperes.
+# TYPE deye_load_current_a gauge
+deye_load_current_a{{phase="L1",serial="{serial}"}} {load[l1][current]:.3f}
+deye_load_current_a{{phase="L2",serial="{serial}"}} {load[l2][current]:.3f}
+deye_load_current_a{{phase="L3",serial="{serial}"}} {load[l3][current]:.3f}
+
+# HELP deye_load_power_w Load phase power in watts.
+# TYPE deye_load_power_w gauge
+deye_load_power_w{{phase="L1",serial="{serial}"}} {load[l1][power]:.3f}
+deye_load_power_w{{phase="L2",serial="{serial}"}} {load[l2][power]:.3f}
+deye_load_power_w{{phase="L3",serial="{serial}"}} {load[l3][power]:.3f}
+
+# HELP deye_load_total_power_w Total load power in watts.
+# TYPE deye_load_total_power_w gauge
+deye_load_total_power_w{{serial="{serial}"}} {load[total_power]:.3f}
+
+# === Battery ===
+# HELP deye_battery_voltage_v Battery voltage in volts.
+# TYPE deye_battery_voltage_v gauge
+deye_battery_voltage_v{{id="1",serial="{serial}"}} {battery[battery1][voltage]:.3f}
+deye_battery_voltage_v{{id="2",serial="{serial}"}} {battery[battery2][voltage]:.3f}
+
+# HELP deye_battery_current_a Battery current in amperes.
+# TYPE deye_battery_current_a gauge
+deye_battery_current_a{{id="1",serial="{serial}"}} {battery[battery1][current]:.3f}
+deye_battery_current_a{{id="2",serial="{serial}"}} {battery[battery2][current]:.3f}
+
+# HELP deye_battery_power_w Battery power in watts (positive=discharge, negative=charge).
+# TYPE deye_battery_power_w gauge
+deye_battery_power_w{{id="1",serial="{serial}"}} {battery[battery1][power]:.3f}
+deye_battery_power_w{{id="2",serial="{serial}"}} {battery[battery2][power]:.3f}
+
+# HELP deye_battery_temperature_c Battery temperature in Celsius.
+# TYPE deye_battery_temperature_c gauge
+deye_battery_temperature_c{{id="1",serial="{serial}"}} {battery[battery1][temperature]:.3f}
+deye_battery_temperature_c{{id="2",serial="{serial}"}} {battery[battery2][temperature]:.3f}
+
+# HELP deye_battery_soc_percent Battery state of charge in percent.
+# TYPE deye_battery_soc_percent gauge
+deye_battery_soc_percent{{id="1",serial="{serial}"}} {battery[battery1][soc]:.3f}
+deye_battery_soc_percent{{id="2",serial="{serial}"}} {battery[battery2][soc]:.3f}
+
+# === Status & Temps ===
+# HELP deye_inverter_temperature_dc_c Inverter DC side temperature in Celsius.
+# TYPE deye_inverter_temperature_dc_c gauge
+deye_inverter_temperature_dc_c{{serial="{serial}"}} {system[dc_temperature]:.3f}
+
+# HELP deye_inverter_temperature_ac_c Inverter AC side temperature in Celsius.
+# TYPE deye_inverter_temperature_ac_c gauge
+deye_inverter_temperature_ac_c{{serial="{serial}"}} {system[ac_temperature]:.3f}
+
+# HELP deye_status_code Dummy status code exported as labels (string value exposed via info metric).
+# TYPE deye_status gauge
+deye_status{{status="{system[status]}",serial="{serial}"}} 1
+
+# === Daily energy (kWh) ===
+# HELP deye_daily_pv_kwh Daily PV generation in kWh.
+# TYPE deye_daily_pv_kwh gauge
+deye_daily_pv_kwh{{serial="{serial}"}} {daily_energy[pv_generation]:.3f}
+
+# HELP deye_daily_load_kwh Daily load consumption in kWh.
+# TYPE deye_daily_load_kwh gauge
+deye_daily_load_kwh{{serial="{serial}"}} {daily_energy[load_consumption]:.3f}
+
+# HELP deye_daily_grid_import_kwh Daily grid import in kWh.
+# TYPE deye_daily_grid_import_kwh gauge
+deye_daily_grid_import_kwh{{serial="{serial}"}} {daily_energy[grid_import]:.3f}
+
+# HELP deye_daily_grid_export_kwh Daily grid export in kWh.
+# TYPE deye_daily_grid_export_kwh gauge
+deye_daily_grid_export_kwh{{serial="{serial}"}} {daily_energy[grid_export]:.3f}
+
+# HELP deye_daily_battery_charge_kwh Daily battery charge in kWh.
+# TYPE deye_daily_battery_charge_kwh gauge
+deye_daily_battery_charge_kwh{{serial="{serial}"}} {daily_energy[battery_charge]:.3f}
+
+# HELP deye_daily_battery_discharge_kwh Daily battery discharge in kWh.
+# TYPE deye_daily_battery_discharge_kwh gauge
+deye_daily_battery_discharge_kwh{{serial="{serial}"}} {daily_energy[battery_discharge]:.3f}
+
+# === Lifetime totals (kWh) ===
+# HELP deye_total_pv_kwh Lifetime PV generation in kWh.
+# TYPE deye_total_pv_kwh gauge
+deye_total_pv_kwh{{serial="{serial}"}} {total_energy[pv_generation]:.3f}
+
+# HELP deye_total_load_kwh Lifetime load consumption in kWh.
+# TYPE deye_total_load_kwh gauge
+deye_total_load_kwh{{serial="{serial}"}} {total_energy[load_consumption]:.3f}
+
+# HELP deye_total_grid_import_kwh Lifetime grid import in kWh.
+# TYPE deye_total_grid_import_kwh gauge
+deye_total_grid_import_kwh{{serial="{serial}"}} {total_energy[grid_import]:.3f}
+
+# HELP deye_total_grid_export_kwh Lifetime grid export in kWh.
+# TYPE deye_total_grid_export_kwh gauge
+deye_total_grid_export_kwh{{serial="{serial}"}} {total_energy[grid_export]:.3f}
+
+# HELP deye_total_battery_charge_kwh Lifetime battery charge in kWh.
+# TYPE deye_total_battery_charge_kwh gauge
+deye_total_battery_charge_kwh{{serial="{serial}"}} {total_energy[battery_charge]:.3f}
+
+# HELP deye_total_battery_discharge_kwh Lifetime battery discharge in kWh.
+# TYPE deye_total_battery_discharge_kwh gauge
+deye_total_battery_discharge_kwh{{serial="{serial}"}} {total_energy[battery_discharge]:.3f}
+
+# === Config flags ===
+# HELP deye_grid_charge_enable Grid charge enable (1=yes, 0=no).
+# TYPE deye_grid_charge_enable gauge
+deye_grid_charge_enable{{serial="{serial}"}} {grid_charge_enable_num}
+
+# HELP deye_solar_sell_enable Solar sell enable (1=yes, 0=no).
+# TYPE deye_solar_sell_enable gauge
+deye_solar_sell_enable{{serial="{serial}"}} {solar_sell_enable_num}
